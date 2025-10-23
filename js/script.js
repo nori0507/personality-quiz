@@ -5,7 +5,7 @@ console.log("script.js connected!");
 let qestions = document.querySelectorAll(".question-block");
 
 // I decided to use array for storing the answer, creating an empty array
-let userAnswers = []
+let userAnswers = [];
 
 // going over each question using forEaxh
 // Why we use function()? - because forEach() expect to have function()
@@ -13,7 +13,7 @@ let userAnswers = []
 // index represents which question i am on -> using index for the array would prevent to keep the number of the previsous selection in array
 qestions.forEach(function(block, index) {
     // NodeList of all the buttons for one specific question, block., bc current element is block
-    let buttons = block.querySelectorAll(".answer-btn")
+    let buttons = block.querySelectorAll(".answer-btn");
 
     // going over each button using forEach()
     buttons.forEach(function(button) {
@@ -27,7 +27,7 @@ qestions.forEach(function(block, index) {
             button.classList.add("selected");
 
             // Get the data using the dataset attribute 
-            let buttonID = button.dataset.answer
+            let buttonID = button.dataset.answer;
             // Store the data in an array
             userAnswers[index] = Number(buttonID);
 
@@ -38,7 +38,7 @@ qestions.forEach(function(block, index) {
 
 
 function displayResult(arr) {
-    // this will hold the resulting message 
+    // this will hold the result message 
     let result = "";
 
     // I was getting weird output when i did not answer all the questions, so i created a result that will be displayed when the users do not answer the all the questions
@@ -49,41 +49,45 @@ function displayResult(arr) {
         //calculating the score
         total = 0;
         for (let i = 0; i < userAnswers.length; i++) {
+            //converting string to number
             let num = Number(userAnswers[i]);
             total += num;
         }
 
+        // assigning the result messages according to a score
         if (total<= 7){
             result = "You are: Rainbow Cake!";
         }
         else if (total <= 12) {
-            result = "You are: Cupcake";
+            result = "You are: Cupcake!";
         }
         else if (total <= 15){
-            result = "You are: Macaron";
+            result = "You are: Macaron!";
         }
         else if (total <= 18){
-            result = "You are: Fruit Tart";
+            result = "You are: Fruit Tart!";
         }
         else if (total <= 22){
-            result = "You are: Chocolate";
+            result = "You are: Chocolate!";
         }
         else{
-            result = "You are: Ice Cream";
+            result = "You are: Ice Cream!";
         }
 
     }
 
     // when html has id, you put nothing infront
     let output = document.getElementById("result-container"); 
-    output.style.display = "block"; // <-- makes it visible
+    // making the result message visible
+    output.style.display = "block"; 
+    // actual text the userswill see on the screen
     output.textContent = `${result}`;
 }
 
-// Select the button by its id
+// Select the button 
 let resultButton = document.getElementById("show-result");
 
-// Add a click event listener to it
+// when the button is clicked the result will be displayed
 resultButton.addEventListener("click", function() {
   displayResult(userAnswers);
 });

@@ -42,7 +42,7 @@ function displayResult(arr) {
     let result = "";
 
     // I was getting weird output when i did not answer all the questions, so i created a result that will be displayed when the users do not answer the all the questions
-    if (userAnswers.length < 6) {
+    if (userAnswers.length < 5) {
         result = "Please answer all the questions";
     }
     else{
@@ -55,19 +55,19 @@ function displayResult(arr) {
         }
 
         // assigning the result messages according to a score
-        if (total<= 7){
+        if (total<= 5){
             result = "You are: Rainbow Cake!";
         }
-        else if (total <= 12) {
+        else if (total <= 8) {
             result = "You are: Cupcake!";
         }
-        else if (total <= 15){
+        else if (total <= 12){
             result = "You are: Macaron!";
         }
-        else if (total <= 18){
+        else if (total <= 15){
             result = "You are: Fruit Tart!";
         }
-        else if (total <= 22){
+        else if (total <= 18){
             result = "You are: Chocolate!";
         }
         else{
